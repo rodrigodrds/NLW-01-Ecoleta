@@ -8,7 +8,6 @@ class PointsController {
     const parsedItems = String(items)
       .split(',')
       .map(item => Number(item.trim()));
-    console.log(parsedItems);
 
     const points = await knex('points')
       .join('point_items', 'points.id', '=', 'point_items.point_id')
@@ -43,7 +42,7 @@ class PointsController {
       email,
       whatsapp,
       latitude,
-      longiture,
+      longitude,
       city,
       uf,
       items
@@ -57,16 +56,14 @@ class PointsController {
       email,
       whatsapp,
       latitude,
-      longiture,
+      longitude,
       city,
       uf
     };
 
     const insertedIds = await trx('points').insert(point);
 
-    console.log(insertedIds)
     const point_id = insertedIds[0];
-    console.log(point_id)
 
     const pointItems = items.map((item_id: number) => {
       return {
@@ -74,7 +71,6 @@ class PointsController {
         point_id,
       };
     })
-    console.log(pointItems);
     await trx('point_items').insert(pointItems);
 
     await trx.commit();
