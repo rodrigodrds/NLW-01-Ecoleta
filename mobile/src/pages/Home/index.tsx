@@ -41,8 +41,11 @@ const Home = () => {
   useEffect(() => {
     ibgeAPI.get<IBGEUFResponse[]>('estados')
       .then(response => {
-        const ufsItems = response.data.map(uf => {
-          return { label: uf.sigla, value: uf.sigla }
+        const ufsItems = response.data
+        .map(uf => uf.sigla)
+        .sort()
+        .map(uf => {
+          return { label: uf, value: uf }
         });
 
         setUf(ufsItems);
