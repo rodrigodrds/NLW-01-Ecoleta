@@ -24,3 +24,5 @@ yarn-error.log*
 *.sqlite
 
 **/.vscode
+uploads/**
+!uploads/*.svg

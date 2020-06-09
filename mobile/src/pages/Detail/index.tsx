@@ -15,6 +15,7 @@ interface Data {
   point: {
     name: string;
     image: string;
+    image_url: string;
     email: string;
     whatsapp: string;
     city: string;
@@ -66,7 +67,7 @@ const Detail = () => {
           <Icon name="arrow-left" size={20} color="#34cb79" />
         </TouchableOpacity>
 
-        <Image style={styles.pointImage} source={{ uri: data.point.image }} />
+        <Image style={styles.pointImage} source={{ uri: data.point.image_url }} />
 
         <Text style={styles.pointName}>{data.point.name}</Text>
         <Text style={styles.pointItems}>
